@@ -183,9 +183,9 @@ body{
 </div>
 
 <div class="categories">
-  <div class="cat active">All</div>
-  <div class="cat">Cheap</div>
-  <div class="cat">Top</div>
+  <div class="cat active" onclick="setFilter('all',this)">All</div>
+  <div class="cat" onclick="setFilter('cheap',this)">Cheap</div>
+  <div class="cat" onclick="setFilter('top',this)">Top</div>
 </div>
 
 <div class="grid" id="grid"></div>
@@ -202,8 +202,8 @@ body{
 </div>
 
 <div class="nav">
-  <button class="active">Shop</button>
-  <button>Profile</button>
+  <button class="active" onclick="openTab('shop',this)">Shop</button>
+  <button onclick="openTab('profile',this)">Profile</button>
 </div>
 
 <script>
@@ -211,13 +211,15 @@ const items = [
   {
     title:"Аккаунт #1",
     desc:"Пато + легенды",
-    price:"₽450",
+    price:450,
+    type:"cheap",
     img:"https://i.imgur.com/gi0KlGv.jpeg"
   },
   {
     title:"Аккаунт #2",
     desc:"Бейл + топ состав",
-    price:"₽850",
+    price:850,
+    type:"top",
     img:"https://i.imgur.com/Iuh2ZYu.jpeg"
   }
 ];
@@ -257,7 +259,54 @@ function buy(){
   const name=document.getElementById("mTitle").innerText;
   window.location.href="https://t.me/Ev1chek?text=Хочу купить "+name;
 }
+
+function render(filter="all"){
+  grid.innerHTML="";
+
+  items
+    .filter(item=>{
+      if(filter==="all") return true;
+      return item.type===filter;
+    })
+    .forEach((item,i)=>{
+      const el=document.createElement("div");
+      el.className="card";
+      el.innerHTML=`
+        <img src="${item.img}">
+        <div class="info">
+          <div class="title">${item.title}</div>
+          <div class="price">₽${item.price}</div>
+        </div>
+      `;
+      el.onclick=()=>openItem(i);
+      grid.appendChild(el);
+    });
+}
+
+function setFilter(type,el){
+  document.querySelectorAll(".cat").forEach(c=>c.classList.remove("active"));
+  el.classList.add("active");
+  render(type);
+}
+
+function openTab(tab,el){
+  document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
+  el.classList.add("active");
+
+  if(tab==="shop"){
+    document.getElementById("grid").style.display="grid";
+    document.getElementById("profilePage").style.display="none";
+  }else{
+    document.getElementById("grid").style.display="none";
+    document.getElementById("profilePage").style.display="block";
+  }
+}
+
 </script>
+<div id="profilePage" style="display:none; padding:20px;">
+  <h2>Профиль</h2>
+  <p>Тут будет инфа о тебе</p>
+</div>
 
 </body>
 </html>
