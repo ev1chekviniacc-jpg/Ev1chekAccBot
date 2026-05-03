@@ -8,17 +8,19 @@
 body {
   margin: 0;
   font-family: Arial;
-  background: #0f0f1a;
+  background: radial-gradient(circle, #1a1a2e, #0f0f1a);
   color: white;
 }
 
+/* HEADER */
 .header {
-  background: linear-gradient(90deg, purple, blue);
   padding: 15px;
   text-align: center;
   font-weight: bold;
+  background: linear-gradient(90deg,#6a00ff,#00c3ff);
 }
 
+/* MENU */
 .menu {
   display: flex;
   justify-content: space-around;
@@ -30,32 +32,45 @@ body {
   background: none;
   border: none;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
 }
 
+/* CARDS */
 .cards {
   padding: 10px;
 }
 
 .card {
-  background: #1c1c2e;
+  background: linear-gradient(145deg,#1c1c2e,#2a2a40);
   border-radius: 15px;
+  margin-bottom: 12px;
   padding: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
+  transition: 0.2s;
+}
+
+.card:active {
+  transform: scale(0.97);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
 }
 
 .price {
   color: lime;
+  font-weight: bold;
 }
 
-/* Скрытые страницы */
+/* PAGES */
 .page {
   display: none;
-  padding: 15px;
+  padding: 10px;
+  opacity: 0;
+  transition: 0.3s;
 }
-</style>
 
+</style>
 </head>
 
 <body>
@@ -71,12 +86,14 @@ body {
 <div id="shop" class="cards">
 
   <div class="card" onclick="openItem('acc1')">
+    <img src="https://via.placeholder.com/300x150">
     <h3>Аккаунт #1</h3>
     <p>Пато</p>
     <p class="price">₽450</p>
   </div>
 
   <div class="card" onclick="openItem('acc2')">
+    <img src="https://via.placeholder.com/300x150">
     <h3>Аккаунт #2</h3>
     <p>Бейл</p>
     <p class="price">₽850</p>
@@ -87,6 +104,7 @@ body {
 <!-- ITEM PAGE -->
 <div id="item" class="page">
   <button onclick="showPage('shop')">← Назад</button>
+  <img id="itemImg" style="width:100%; border-radius:10px;">
   <h2 id="itemTitle"></h2>
   <p id="itemDesc"></p>
   <p class="price" id="itemPrice"></p>
@@ -100,40 +118,53 @@ body {
 </div>
 
 <script>
+
 const data = {
   acc1: {
     title: "Аккаунт #1",
     desc: "Пато",
-    price: "450₽"
+    price: "₽450",
+    img: "https://via.placeholder.com/300x150"
   },
   acc2: {
-    title: "Account #2",
+    title: "Аккаунт #2",
     desc: "Бейл",
-    price: "850₽"
+    price: "₽850",
+    img: "https://via.placeholder.com/300x150"
   }
 };
 
 function showPage(page) {
-  document.getElementById("shop").style.display = "none";
-  document.getElementById("item").style.display = "none";
-  document.getElementById("profile").style.display = "none";
+  const pages = ["shop","item","profile"];
 
-  document.getElementById(page).style.display = "block";
+  pages.forEach(p=>{
+    const el=document.getElementById(p);
+    el.style.opacity="0";
+    setTimeout(()=>el.style.display="none",200);
+  });
+
+  setTimeout(()=>{
+    const active=document.getElementById(page);
+    active.style.display="block";
+    setTimeout(()=>active.style.opacity="1",50);
+  },200);
 }
 
-function openItem(id) {
-  const item = data[id];
+function openItem(id){
+  const item=data[id];
 
-  document.getElementById("itemTitle").innerText = item.title;
-  document.getElementById("itemDesc").innerText = item.desc;
-  document.getElementById("itemPrice").innerText = item.price;
+  document.getElementById("itemTitle").innerText=item.title;
+  document.getElementById("itemDesc").innerText=item.desc;
+  document.getElementById("itemPrice").innerText=item.price;
+  document.getElementById("itemImg").src=item.img;
 
   showPage("item");
 }
 
-function buy() {
-  alert("Покупка пока не подключена");
+function buy(){
+  window.location.href="https://t.me/ТВОЙ_ЮЗЕРНЕЙМ?text=Хочу купить аккаунт";
 }
+
 </script>
 
 </body>
