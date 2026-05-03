@@ -6,70 +6,83 @@
 
 <style>
 body {
-  margin: 0;
+  margin:0;
   font-family: Arial;
-  background: radial-gradient(circle, #1a1a2e, #0f0f1a);
-  color: white;
+  background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
+  color:white;
 }
 
 /* HEADER */
 .header {
-  padding: 15px;
-  text-align: center;
-  font-weight: bold;
-  background: linear-gradient(90deg,#6a00ff,#00c3ff);
+  padding:15px;
+  text-align:center;
+  font-weight:bold;
+  font-size:18px;
+  background: linear-gradient(90deg,#7b00ff,#00d4ff);
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
 
 /* MENU */
 .menu {
-  display: flex;
-  justify-content: space-around;
-  background: #1c1c2e;
-  padding: 10px;
+  display:flex;
+  justify-content:space-around;
+  background:#121222;
+  padding:10px;
 }
 
 .menu button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 15px;
+  background:none;
+  border:none;
+  color:#aaa;
 }
 
-/* CARDS */
-.cards {
-  padding: 10px;
+.menu button:hover {
+  color:white;
 }
 
+/* CARD */
 .card {
-  background: linear-gradient(145deg,#1c1c2e,#2a2a40);
-  border-radius: 15px;
-  margin-bottom: 12px;
-  padding: 10px;
-  transition: 0.2s;
+  background: linear-gradient(145deg,#1c1c2e,#2b2b45);
+  border-radius:15px;
+  padding:10px;
+  margin-bottom:12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  transition:0.2s;
 }
 
 .card:active {
-  transform: scale(0.97);
+  transform:scale(0.96);
 }
 
 .card img {
-  width: 100%;
-  border-radius: 10px;
+  width:100%;
+  border-radius:10px;
 }
 
+/* PRICE */
 .price {
-  color: lime;
-  font-weight: bold;
+  color:#00ff88;
+  font-weight:bold;
+  font-size:16px;
+}
+
+/* BUTTON */
+button {
+  background: linear-gradient(90deg,#00ffcc,#00aaff);
+  border:none;
+  padding:10px;
+  border-radius:10px;
+  color:black;
+  font-weight:bold;
+  margin-top:10px;
 }
 
 /* PAGES */
 .page {
-  display: none;
-  padding: 10px;
-  opacity: 0;
-  transition: 0.3s;
+  display:none;
+  opacity:0;
+  transition:0.3s;
 }
-
 </style>
 </head>
 
@@ -124,13 +137,13 @@ const data = {
     title: "Аккаунт #1",
     desc: "Пато",
     price: "₽450",
-    img: "https://ibb.co/1GrrnXfJ"
+    img: "https://imgur.com/a/7exMZqE.png"
   },
   acc2: {
     title: "Аккаунт #2",
     desc: "Бейл",
     price: "₽850",
-    img: "https://ibb.co/HTz461KW"
+    img: "https://imgur.com/a/7exMZqE.png"
   }
 };
 
@@ -162,7 +175,7 @@ function openItem(id){
 }
 
 function buy(){
-  window.location.href="https://t.me/ТВОЙ_ЮЗЕРНЕЙМ?text=Хочу купить аккаунт";
+  window.location.href="https://t.me/Ev1chek?text=Хочу купить аккаунт";
 }
 
 </script>
