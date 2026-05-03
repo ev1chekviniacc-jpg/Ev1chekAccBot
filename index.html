@@ -1,11 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>My Bot App</title>
+<meta charset="UTF-8">
+<title>Market</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f0f1a;
+  color: white;
+}
+
+.header {
+  background: linear-gradient(90deg, purple, blue);
+  padding: 20px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  background: #1c1c2e;
+  padding: 10px;
+}
+
+.menu button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+}
+
+.cards {
+  padding: 10px;
+}
+
+.card {
+  background: #1c1c2e;
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.price {
+  color: lime;
+  font-weight: bold;
+}
+</style>
 </head>
+
 <body>
-  <h1>Мой магазин</h1>
-  <button>Купить аккаунт</button>
+
+<div class="header">
+  EFOOTBALL BAZAR
+</div>
+
+<div class="menu">
+  <button>Shop</button>
+  <button>Profile</button>
+</div>
+
+<div class="cards">
+
+  <div class="card">
+    <h3>Account #1</h3>
+    <p>Messi, Mbappe</p>
+    <p class="price">$10</p>
+    <button>Купить</button>
+  </div>
+
+  <div class="card">
+    <h3>Account #2</h3>
+    <p>Ronaldo, Neymar</p>
+    <p class="price">$15</p>
+    <button>Купить</button>
+  </div>
+
+</div>
+
 </body>
 </html>
